@@ -54,8 +54,6 @@ class Producto(models.Model):
         Representa la relacion muchos a muchos con el tipo del producto
     nombre : str(256)
         Nombre para identificar el producto
-    tipo : +int
-        Tipo correspondiente al producto definido para el negocio
     imagen : file
         Campo donde se almacena una imagen que represente al producto
     color : Color

@@ -13,7 +13,8 @@ router.register('producto', ProductoViewSet)
 router.register('producto-tipo', ProductoTipoViewSet)
 
 urlpatterns = [
-    path( 'api/', include(router.urls) )
+    path( 'api/', include(router.urls) ),
+    path( 'api/datos/producto/<int:id_producto>/', DatosProductoAPI.as_view() )
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
+from rest_framework.response import Response
 
 from .models import *
 from .serializers import *
@@ -24,3 +25,11 @@ class ProductoViewSet(viewsets.ModelViewSet):
 class ProductoTipoViewSet(viewsets.ModelViewSet):
     queryset = ProductoTipo.objects.all()
     serializer_class = ProductoTipoSerializador
+
+class DatosProductoAPI(generics.RetrieveAPIView):
+    queryset = ProductoTipo.objects.all()
+
+    def get(self, request, *args, **kwargs):
+        queryset = ProductoTipo.objects.filter(producto_id=kwargs['id_producto'])
+        serializer = DatosProductoSerializador(queryset, many=True)
+        return Response(serializer.data)

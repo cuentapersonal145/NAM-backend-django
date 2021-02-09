@@ -6,6 +6,7 @@ from .models import *
 
 admin.site.register([
     Tipo,
+    Categoria,
+    Marca,
     Producto,
-    ProductoTipo,
 ])

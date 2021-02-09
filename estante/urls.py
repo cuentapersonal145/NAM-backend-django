@@ -9,12 +9,13 @@ from .views import *
 router = DefaultRouter()
 
 router.register('tipo', TipoViewSet)
+router.register('categoria', CategoriaViewSet)
+router.register('marca', MarcaViewSet)
 router.register('producto', ProductoViewSet)
-router.register('producto-tipo', ProductoTipoViewSet)
 
 urlpatterns = [
     path( 'api/', include(router.urls) ),
-    path( 'api/datos/producto/<int:id_producto>/', DatosProductoAPI.as_view() )
+    path( 'api/productos/marca/<int:id>/', DatosProductoAPI.as_view() )
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
